@@ -1,3 +1,26 @@
-body{
-    background: orange;
+nav{
+    background: #6d4aa0;
+    color:#fff;
+    padding: 1vw 2vw;
+    display: flex;
+    justify-content: space-between;
+    ul{                
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+        li{
+            a{
+                padding: 0vw 2vw;
+                text-decoration: none;
+                color:#fff;
+                transition: 400ms color;
+                font-weight: bold;
+                &:hover{
+                    color: rgb(147, 224, 4);
+                    text-decoration: none;                    
+                }
+            }
+        }
+    }
 }
