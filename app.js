@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
 
@@ -10,9 +11,13 @@ const db = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password:"",
-    database: process.env.DB_DB
+    database: process.env.DB
 
 });
+
+const publicDirectory = path.join(__dirname, './public');
+app.use(express.static(publicDirectory));
+app.set('view engine', 'hbs');
 db.connect((err)=>{
     if(err){
         console.log(err);
@@ -21,7 +26,7 @@ db.connect((err)=>{
     }
 })
 app.get('/', (req,res)=>{
-    res.send("Home page");
+    res.render("index")
 });
 
 app.listen(3000, ()=>{
