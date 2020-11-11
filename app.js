@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const mysql = require('mysql2');
 const dotenv = require('dotenv');
+const { route } = require('./routes/pages');
 
 dotenv.config({path: './.env'});
 
@@ -25,12 +26,9 @@ db.connect((err)=>{
         console.log('Successfully connected to db');
     }
 })
-app.get('/', (req,res)=>{
-    res.render("index")
-});
-app.get('/register', (req,res)=>{
-    res.render("register");
-})
+
+//Define routes
+app.use('/', require('./routes/pages.js'));
 
 app.listen(3000, ()=>{
     console.log('Server is running');
