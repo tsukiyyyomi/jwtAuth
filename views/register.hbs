@@ -22,7 +22,7 @@
                 Register form
             </div>
             <div class="card-body">  
-                <form>
+                <form action="/auth/register" method="POST">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" name="name">
@@ -33,12 +33,19 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password">
+                        <input type="password" class="form-control" name="password" id="password">
+                    </div> 
+                     <div class="form-group">
+                        <label for="passwordConf">Confirm password</label>
+                        <input type="password" class="form-control" name="passwordConf" id="passwordConf">
                     </div>                    
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>                                              
             </div>
         </div>
+        {{#if message }}
+            <h4 class="alert-danger mt-4">{{message}}</h4>
+        {{/if}}
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 </body>

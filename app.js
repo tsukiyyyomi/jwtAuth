@@ -17,6 +17,10 @@ const db = mysql.createConnection({
 });
 
 const publicDirectory = path.join(__dirname, './public');
+
+app.use(express.urlencoded({extended:false}));
+app.use(express.json());
+
 app.use(express.static(publicDirectory));
 app.set('view engine', 'hbs');
 db.connect((err)=>{
@@ -29,7 +33,7 @@ db.connect((err)=>{
 
 //Define routes
 app.use('/', require('./routes/pages.js'));
-
+app.use('/auth', require('./routes/auth'));
 app.listen(3000, ()=>{
     console.log('Server is running');
 });
